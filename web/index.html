@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Registrate!</title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+        <div class="container text-center">
+            <h1>Registro Usuarios</h1><br>
+        </div>
+        <div class="container-fluid text-center">
+            <form data-toggle="validator" role="form" class="form-horizontal col-md-offset-4" id="contactform" action="RegistrarUsu" method="post">
+                    <div class="form-group">
+                        <label for="name" class="control-label col-xs-2">Nombre</label>
+                        <div class="col-xs-3">
+                            <input id="nombre" type ="text" pattern="[A-Za-z]+" class="form-control" title="El nombre no puede estar vacío y debe contener solo letras en mayúsculas o minúsculas." name="name" placeholder="Nombre" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="control-label col-xs-2">Apellidos</label>
+                        <div class="col-xs-3">
+                            <input id="apellidos" class="form-control" pattern="[A-Za-z]+" name="surname" title="Los apellidos no pueden estar vacíos y deben contener solo letras en mayúsculas o minúsculas." placeholder="Apellidos" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="control-label col-xs-2">Email</label>
+                        <div class="col-xs-3">
+                            <input id="email" class="form-control" name="email" type="email" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="control-label col-xs-2">Nombre de usuario</label>
+                        <div class="col-xs-3">
+                            <input id="nickname" class="form-control" name="nickname" placeholder="Nombre de usuario" title="El nombre de usuario no puede estar vacío y debe contener solo letras, números o guiones bajos." type="text" required pattern="\w+">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label col-xs-2">Contraseña</label>
+                        <div class="col-xs-3">
+                            <input id="password" type="password"  name="password" class="form-control" title="La contraseña debe contener como mínimo 6 carácteres, incluyendo mayúsculas, mínusculas, y números." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Repetir contraseña</label>
+                        <div class="col-xs-3">
+                            <input id="repassword" type="password"  name="repassword" class="form-control" title="Por favor, escribe una contraseña que coincida con la anterior." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-2 col-xs-5">
+                            <button id="submit" type="submit" class="btn btn-primary">Login</button>
+                            <button id="reset"  type="reset" class="btn btn-primary" >Reset</button> 
+                        </div>
+                    </div>
+            </form>
+        </div> 
+    </body>
+</html>
