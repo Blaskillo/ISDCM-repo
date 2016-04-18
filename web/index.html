@@ -1,71 +1,178 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>Registrate!</title>
 
-        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <!-- Basic -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">	
+
+        <title>Login | ISDCM - Gestor de Videos</title>	
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <!-- Web Fonts  -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+        <!-- Vendor CSS -->
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+        <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+        <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+
+        <!-- Theme CSS -->
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/theme-elements.css">
+        <link rel="stylesheet" href="css/theme-animate.css">
+
+        <!-- Skin CSS -->
+        <link rel="stylesheet" href="css/skins/default.css">
+
+        <!-- Theme Custom CSS -->
+        <link rel="stylesheet" href="css/custom.css">
+
+        <!-- Head Libs -->
+        <script src="vendor/modernizr/modernizr.min.js"></script>
+
         <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/login.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="js/loginFunctions.js"></script>
+        <script src="js/bootbox.min.js"></script>
 
     </head>
     <body>
-        <div class="container text-center">
-            <h1>Registro Usuarios</h1><br>
+
+        <div class="body">
+            <header id="header" data-plugin-options='{"stickyStartAt": 57}'>
+                <div class="header-body">
+                    <div class="header-container container">
+                        <div class="header-logo col-md-2 col-md-offset-4">
+                            <a href="index.html">
+                                <img alt="Videos" width="350" height="100" src="img/videosLogo.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div role="main" class="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="panel panel-login">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <a href="#" class="active" id="login-form-link">Haz login</a>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <a href="#" id="register-form-link">Registrate</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <form id="login-form" style="display: block;" action="LoginUsuarioController" method="post">
+                                                <div class="form-group">
+                                                    <input id="nicknameLog" name="nickname" placeholder="Nombre de usuario o email" tabindex="1" class="form-control" title="El nombre de usuario no puede estar vacío y debe contener solo letras, números o guiones bajos." type="text" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="passwordLog" name="password" placeholder="Contraseña" tabindex="1" type="password"   class="form-control" title="La contraseña debe contener como mínimo 6 carácteres, incluyendo mayúsculas, mínusculas, y números." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                                                    <label for="remember">Recuerdame</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-sm-offset-3">
+                                                            <button type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" data-toggle="modal" data-target="#myModal">Logueate!</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="text-center">
+                                                                <a href="http://phpoll.com/recover" tabindex="5" class="forgot-password">Has olvidado tu contraseña?</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <form id="register-form" style="display: none;" action="RegistrarUsuarioController" method="post">
+                                                <div class="form-group">
+                                                    <input id="nombreReg" name="name" placeholder="Nombre" type="text" pattern="[A-Za-z]+" tabindex="1" class="form-control" title="El nombre no puede estar vacío y debe contener solo letras en mayúsculas o minúsculas."  required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="apellidosReg" name="surname" placeholder="Apellidos" type ="text" pattern="[A-Za-z]+" tabindex="1" class="form-control" title="Los apellidos no pueden estar vacíos y deben contener solo letras en mayúsculas o minúsculas." required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="emailReg" name="email" placeholder="Email" tabindex="1" class="form-control"  type="email"  required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="nicknameReg" name="nickname" placeholder="Nombre de usuario" tabindex="1" class="form-control" title="El nombre de usuario no puede estar vacío y debe contener solo letras, números o guiones bajos." type="text" required pattern="\w+">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="passwordReg" name="password" placeholder="Contraseña" tabindex="1" type="password"   class="form-control" title="La contraseña debe contener como mínimo 6 carácteres, incluyendo mayúsculas, mínusculas, y números." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="repasswordReg" name="repassword" placeholder="Repite la contraseña" type="password" tabindex="1" class="form-control" title="Por favor, escribe una contraseña que coincida con la anterior." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">                                  
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-sm-offset-3">
+                                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Registrate!">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="container-fluid text-center">
-            <form data-toggle="validator" role="form" class="form-horizontal col-md-offset-4" id="contactform" action="RegistrarUsu" method="post">
-                    <div class="form-group">
-                        <label for="name" class="control-label col-xs-2">Nombre</label>
-                        <div class="col-xs-3">
-                            <input id="nombre" type ="text" pattern="[A-Za-z]+" class="form-control" title="El nombre no puede estar vacío y debe contener solo letras en mayúsculas o minúsculas." name="name" placeholder="Nombre" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="control-label col-xs-2">Apellidos</label>
-                        <div class="col-xs-3">
-                            <input id="apellidos" class="form-control" pattern="[A-Za-z]+" name="surname" title="Los apellidos no pueden estar vacíos y deben contener solo letras en mayúsculas o minúsculas." placeholder="Apellidos" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="control-label col-xs-2">Email</label>
-                        <div class="col-xs-3">
-                            <input id="email" class="form-control" name="email" type="email" placeholder="Email" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="nickname" class="control-label col-xs-2">Nombre de usuario</label>
-                        <div class="col-xs-3">
-                            <input id="nickname" class="form-control" name="nickname" placeholder="Nombre de usuario" title="El nombre de usuario no puede estar vacío y debe contener solo letras, números o guiones bajos." type="text" required pattern="\w+">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="control-label col-xs-2">Contraseña</label>
-                        <div class="col-xs-3">
-                            <input id="password" type="password"  name="password" class="form-control" title="La contraseña debe contener como mínimo 6 carácteres, incluyendo mayúsculas, mínusculas, y números." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-2">Repetir contraseña</label>
-                        <div class="col-xs-3">
-                            <input id="repassword" type="password"  name="repassword" class="form-control" title="Por favor, escribe una contraseña que coincida con la anterior." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"> 
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-offset-2 col-xs-5">
-                            <button id="submit" type="submit" class="btn btn-primary">Login</button>
-                            <button id="reset"  type="reset" class="btn btn-primary" >Reset</button> 
-                        </div>
-                    </div>
-            </form>
-        </div> 
+
+        <!-- Vendor -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/jquery.appear/jquery.appear.min.js"></script>
+        <script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+        <script src="vendor/jquery-cookie/jquery-cookie.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/common/common.min.js"></script>
+        <script src="vendor/jquery.validation/jquery.validation.min.js"></script>
+        <script src="vendor/jquery.stellar/jquery.stellar.min.js"></script>
+        <script src="vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+        <script src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
+        <script src="vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+        <script src="vendor/isotope/jquery.isotope.min.js"></script>
+        <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+        <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="vendor/vide/vide.min.js"></script>
+
+        <!-- Theme Base, Components and Settings -->
+        <script src="js/theme.js"></script>
+
+        <!-- Theme Custom -->
+        <script src="js/custom.js"></script>
+
+        <!-- Theme Initialization Files -->
+        <script src="js/theme.init.js"></script>
+
+
     </body>
 </html>
