@@ -34,6 +34,8 @@ public class RegistrarUsuarioController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
@@ -79,9 +81,9 @@ public class RegistrarUsuarioController extends HttpServlet {
                     RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
                     PrintWriter out = response.getWriter();
                     out.println("<div class=\"alert alert-danger\" "
-                            + "style=\"display: block;width:500px;position:absolute;right:550px;bottom: 180px;\">\n"
+                            + "style=\"display: block;width:500px;position:absolute;right:550px;bottom: 170px;\">\n"
                             + "    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\n"
-                            + "    <strong>Cuidado!</strong> El nombre de usuario " + nickname + " ya existe. Por favor utiliza otro nombre.\n"
+                            + "    <strong>Cuidado!</strong> El nombre de usuario <strong>" + nickname + "</strong> o el email <strong>" + correo + "</strong> ya existen. Por favor usa otros.\n"
                             + "  </div>");
                     rd.include(request, response);
                 }

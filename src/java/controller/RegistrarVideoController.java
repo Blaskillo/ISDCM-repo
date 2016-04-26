@@ -7,12 +7,10 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -58,8 +56,8 @@ public class RegistrarVideoController extends HttpServlet {
                 JSONObject jsonObj = array.getJSONObject(i);
                 String titulo = jsonObj.getString("título");
                 String autor = jsonObj.getString("autor");
-                Date creacion = Date.valueOf(jsonObj.getString("fecha de creación"));
-                Time duracion = Time.valueOf(jsonObj.getString("duración"));
+                String creacion = jsonObj.getString("fecha de creación");
+                String duracion = jsonObj.getString("duración");
                 int visualizaciones = Integer.parseInt(jsonObj.getString("visualizaciones"));
                 String descripcion = jsonObj.getString("descripción");
                 String formato = jsonObj.getString("formato");

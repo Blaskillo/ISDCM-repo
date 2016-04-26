@@ -5,9 +5,6 @@
  */
 package model;
 
-import java.sql.Date;
-import java.sql.Time;
-
 /**
  *
  * @author Alex
@@ -16,13 +13,13 @@ public class Video {
 
     private String titulo;
     private String autor;
-    private Date creacion;
-    private Time duracion;
+    private String creacion;
+    private String duracion;
     private int visualizaciones;
     private String descripcion;
     private String formato;
 
-    public Video(String titulo, String autor, Date creacion, Time duracion, int visualizaciones, String descripcion, String formato) {
+    public Video(String titulo, String autor, String creacion, String duracion, int visualizaciones, String descripcion, String formato) {
         this.titulo = titulo;
         this.autor = autor;
         this.creacion = creacion;
@@ -48,19 +45,19 @@ public class Video {
         this.autor = autor;
     }
 
-    public Date getCreacion() {
+    public String getCreacion() {
         return creacion;
     }
 
-    public void setCreacion(Date creacion) {
+    public void setCreacion(String creacion) {
         this.creacion = creacion;
     }
 
-    public Time getDuracion() {
+    public String getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(Time duracion) {
+    public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
 

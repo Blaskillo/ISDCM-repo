@@ -72,8 +72,8 @@ public class CargarVideosBDController extends HttpServlet {
             while (rs.next()) {
                 String titulo = rs.getString("titulo");
                 String autor = rs.getString("autor");
-                Date creacion = Date.valueOf(rs.getString("creacion"));
-                Time duracion = Time.valueOf(rs.getString("duracion"));
+                String creacion = rs.getString("creacion");
+                String duracion = rs.getString("duracion");
                 int visualizaciones = Integer.parseInt(rs.getString("visualizaciones"));
                 String descripcion = rs.getString("descripcion");
                 String formato = rs.getString("formato");

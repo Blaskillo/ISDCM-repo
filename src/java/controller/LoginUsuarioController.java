@@ -53,7 +53,7 @@ public class LoginUsuarioController extends HttpServlet {
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             statement.setQueryTimeout(30);
 
-            ResultSet rs = statement.executeQuery("SELECT * FROM usuarios WHERE nickname='" + nickname + "' OR email='" + nickname + "' AND password='" + password + "'");
+            ResultSet rs = statement.executeQuery("SELECT * FROM usuarios WHERE (nickname='" + nickname + "' OR email='" + nickname + "') AND password='" + password + "'");
 
             if (rs.first()) {
                 Cookie loginCookie = new Cookie("user", rs.getString("nickname"));
