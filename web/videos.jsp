@@ -91,12 +91,13 @@
                             </tr>
                         </table>
                     </div>
-                    <submit id="export-btn" class="btn btn-primary">Guardar Datos</submit>
+                    <submit id="export-btn" class="btn btn-success">Guardar Datos</submit>
                     <br><br>
                     <div id="export" >   
                     </div>
                 </div>
-            </div>
+                
+            </div>     
             <%@ include file="includes/scripts.html" %>
     </body>
 </html>

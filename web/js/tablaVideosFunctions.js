@@ -11,10 +11,12 @@ var $EXPORT = $('#export');
 $('.table-add').click(function () {
     var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
     $TABLE.find('table').append($clone);
+    $BTN.addClass("btn-warning");
 });
 
 $('.table-remove').click(function () {
     $(this).parents('tr').detach();
+    $BTN.addClass("btn-warning");
 });
 
 $('.table-up').click(function () {
@@ -22,11 +24,13 @@ $('.table-up').click(function () {
     if ($row.index() === 1)
         return; // Don't go above the header
     $row.prev().before($row.get(0));
+    $BTN.addClass("btn-warning");
 });
 
 $('.table-down').click(function () {
     var $row = $(this).parents('tr');
     $row.next().after($row.get(0));
+    $BTN.addClass("btn-warning");
 });
 
 // A few jQuery helpers for exporting only
@@ -55,6 +59,8 @@ $BTN.click(function () {
 
         data.push(h);
     });
+     $BTN.removeClass("btn-warning");
+     $BTN.addClass("btn-success");
     $.ajax({
         type: "POST",
         url: "RegistrarVideoController",
@@ -70,7 +76,7 @@ $BTN.click(function () {
             $EXPORT.addClass("alert alert-danger col-md-6");
         }
     });
-    
+   
 });
 
 
