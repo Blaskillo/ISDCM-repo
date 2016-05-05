@@ -33,16 +33,17 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <h1>Buscar videos</h1>
+                                <h1>Ver videos</h1>
                             </div>
                         </div>
                     </div>
                 </section>
                 <div class="container">
-                    <h4>Introduce los parámetros que desees y pulsa Buscar.</h4>
                     <div class="row">
+                        <h4>Introduce los parámetros del video que desees visualizar.</h4>
+
                         <div class="col-md-4">
-                            <form id="buscarVideos-form" action="BuscarVideosControllerClient" method="post">
+                            <form id="buscarVideos-form" action="BuscarYVerVideosControllerClient" method="post">
                                 <div class="form-group">
                                     <input id="tituloBuscar" name="titulo" placeholder="Título" tabindex="1" type="text" class="form-control" title="">
                                 </div>
@@ -54,6 +55,11 @@
                                 </div>
                                 <button type="submit" id="buscarVideo-submit" class="btn btn-primary">Buscar</button>
                             </form>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                        <div id="reproductor" class="col-md-4">
+                            
                         </div>
                     </div>
                     <div id="table" class="table-editable">
@@ -69,6 +75,7 @@
                                     <th>Visualizaciones</th>
                                     <th>Descripción</th>
                                     <th>Formato</th>
+                                    <th>Ver</th>
                                 </tr>
                             </c:if>
                             <c:forEach items="${videosArray}" var="VideosArray">
@@ -80,6 +87,9 @@
                                     <td>${VideosArray.visualizaciones}</td>
                                     <td>${VideosArray.descripcion}</td>
                                     <td>${VideosArray.formato}</td>
+                                    <td>
+                                        <span class="table-play glyphicon glyphicon-play"></span>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </table>

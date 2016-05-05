@@ -7,6 +7,7 @@
 var $TABLE = $('#table');
 var $BTN = $('#export-btn');
 var $EXPORT = $('#export');
+var $REPRODUCTOR = $('#reproductor');
 
 $('.table-add').click(function () {
     var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
@@ -16,6 +17,7 @@ $('.table-add').click(function () {
 
 $('.table-remove').click(function () {
     $(this).parents('tr').detach();
+    //alert($(this).parents('tr').get(2).toString());
     $BTN.addClass("btn-warning");
 });
 
@@ -31,6 +33,10 @@ $('.table-down').click(function () {
     var $row = $(this).parents('tr');
     $row.next().after($row.get(0));
     $BTN.addClass("btn-warning");
+});
+
+$('.table-play').click(function () {
+    $REPRODUCTOR.add("<video width=\"320\" height=\"240\"controls><source src=\"video/Shrek.mp4\" type=\"video/mp4\"></video>")
 });
 
 // A few jQuery helpers for exporting only

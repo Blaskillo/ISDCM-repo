@@ -25,6 +25,15 @@ and open the template in the editor.
   }
 }
 
+.table-play {
+  color: #7D7;
+  cursor: pointer;
+  
+  &:hover {
+    color: #f00;
+  }
+}
+
 .table-up, .table-down {
   color: #007;
   cursor: pointer;
