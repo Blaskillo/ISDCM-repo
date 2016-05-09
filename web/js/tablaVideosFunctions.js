@@ -7,7 +7,8 @@
 var $TABLE = $('#table');
 var $BTN = $('#export-btn');
 var $EXPORT = $('#export');
-var $REPRODUCTOR = $('#reproductor');
+var $BTNPLAY = $('#play-btn');
+var $BTNBUSCAR = $('#buscarVideo-submit');
 
 $('.table-add').click(function () {
     var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
@@ -33,10 +34,6 @@ $('.table-down').click(function () {
     var $row = $(this).parents('tr');
     $row.next().after($row.get(0));
     $BTN.addClass("btn-warning");
-});
-
-$('.table-play').click(function () {
-    $REPRODUCTOR.add("<video width=\"320\" height=\"240\"controls><source src=\"video/Shrek.mp4\" type=\"video/mp4\"></video>")
 });
 
 // A few jQuery helpers for exporting only
@@ -82,7 +79,43 @@ $BTN.click(function () {
             $EXPORT.addClass("alert alert-danger col-md-6");
         }
     });
-   
+});
+
+$BTNPLAY.click(function () {
+    var $rows = $TABLE.find('tr:not(:hidden)');
+    var headers = [];
+    var data = [];
+
+    // Get the headers (add special header logic here)
+    $($rows.shift()).find('th:not(:empty)').each(function () {
+        headers.push($(this).text().toLowerCase());
+    });
+
+    // Turn all existing rows into a loopable array
+    $rows.each(function () {
+        var $td = $(this).find('td');
+        var h = {};
+
+        // Use the headers from earlier to name our hash keys
+        headers.forEach(function (header, i) {
+            h[header] = $td.eq(i).text();
+        });
+
+        data.push(h);
+    });
+    
+    $.ajax({
+        type: "POST",
+        url: "contarVisualizacionesController",
+        data: "jsonObject=" + (JSON.stringify(data)),
+        success: function (response) {
+            location.reload(true);
+        }
+    });
+});
+
+$BTNBUSCAR.submit(function () {
+    document.getElementById("reproductor").style.visibility='hidden'; 
 });
 
 

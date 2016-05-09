@@ -27,13 +27,13 @@
                             <div class="col-md-12">
                                 <ul class="breadcrumb">
                                     <li><a href="#">Home</a></li>
-                                    <li class="active">Videos</li>
+                                    <li class="active">Vídeos</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <h1>Buscar videos</h1>
+                                <h1>Buscador de vídeos</h1>
                             </div>
                         </div>
                     </div>

@@ -27,23 +27,22 @@
                             <div class="col-md-12">
                                 <ul class="breadcrumb">
                                     <li><a href="#">Home</a></li>
-                                    <li class="active">Videos</li>
+                                    <li class="active">Vídeos</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <h1>Ver videos</h1>
+                                <h1>Reproductor de vídeos</h1>
                             </div>
                         </div>
                     </div>
                 </section>
                 <div class="container">
                     <div class="row">
-                        <h4>Introduce los parámetros del video que desees visualizar.</h4>
-
-                        <div class="col-md-4">
-                            <form id="buscarVideos-form" action="BuscarYVerVideosControllerClient" method="post">
+                        <div class="col-md-8">
+                            <h4>Introduce los parámetros del video que desees reproducir.</h4>
+                            <form id="buscarVideos-form" class="col-md-6" action="BuscarYVerVideosControllerClient" method="post">
                                 <div class="form-group">
                                     <input id="tituloBuscar" name="titulo" placeholder="Título" tabindex="1" type="text" class="form-control" title="">
                                 </div>
@@ -56,11 +55,24 @@
                                 <button type="submit" id="buscarVideo-submit" class="btn btn-primary">Buscar</button>
                             </form>
                         </div>
-                        <div class="col-md-2">
-                        </div>
                         <div id="reproductor" class="col-md-4">
-                            
+                            <c:if test="${mostrarPeli eq 'shrek'}">
+                                <div>
+                                    <video width="380" height="230" src="video/Shrek.mp4" controls autoplay loop muted preload="auto"></video>
+                                </div>
+                            </c:if>
+                            <c:if test="${mostrarPeli eq 'tarzan'}">
+                                <div>
+                                    <video width="380" height="230" src="video/Tarzan.mp4" controls autoplay loop muted preload="auto"></video>
+                                </div>
+                            </c:if>
+                            <c:if test="${mostrarPeli eq 'shutter'}">
+                                <div>
+                                    <video width="380" height="230" src="video/ShutterIsland.mp4" controls autoplay loop muted preload="auto"></video>
+                                </div>
+                            </c:if>
                         </div>
+
                     </div>
                     <div id="table" class="table-editable">
                         <table class="table">
@@ -88,8 +100,8 @@
                                     <td>${VideosArray.descripcion}</td>
                                     <td>${VideosArray.formato}</td>
                                     <td>
-                                        <span class="table-play glyphicon glyphicon-play"></span>
-                                    </td>
+                                <submit id="play-btn" class="table-play glyphicon glyphicon-play"></submit>
+                                </td>
                                 </tr>
                             </c:forEach>
                         </table>
