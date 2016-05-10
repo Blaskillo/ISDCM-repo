@@ -51,6 +51,7 @@ public class BuscarYVerVideosControllerClient extends HttpServlet {
         try {
             List<Video> result = buscarVideos(titulo, autor, fechaCreacion);
             if (result.isEmpty()) {
+                request.setAttribute("mostrarPeli", "");
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/verVideos.jsp");
                 PrintWriter out = response.getWriter();
                 out.println("<div class=\"alert alert-danger\" "
@@ -58,6 +59,7 @@ public class BuscarYVerVideosControllerClient extends HttpServlet {
                         + "    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\n"
                         + "    La busqueda realizada no obtuvo ningún resultado.\n"
                         + "  </div>");
+                
                 rd.include(request, response);
             } else {
                 request.setAttribute("videosArray", result);

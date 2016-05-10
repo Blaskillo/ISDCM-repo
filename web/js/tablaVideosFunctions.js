@@ -114,8 +114,4 @@ $BTNPLAY.click(function () {
     });
 });
 
-$BTNBUSCAR.submit(function () {
-    document.getElementById("reproductor").style.visibility='hidden'; 
-});
-
 
